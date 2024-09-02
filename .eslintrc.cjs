@@ -8,16 +8,11 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
-  settings: {
-    react: {
-      version: '18.3',
-    },
-  },
-
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vitest.config.ts'],
   parser: '@typescript-eslint/parser',
-  plugins: ['prettier', 'react', '@typescript-eslint'],
+  plugins: ['prettier', 'react', '@typescript-eslint', 'no-relative-import-paths'],
   rules: {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
