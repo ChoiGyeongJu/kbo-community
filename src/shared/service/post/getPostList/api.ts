@@ -1,5 +1,6 @@
-import { PostInfo } from '@shared/types';
 import axios from 'axios';
+
+import { PostInfo } from '$shared/types';
 
 type ReqGetPostList = { page: number };
 type ResGetPostList = { postList: PostInfo[] };

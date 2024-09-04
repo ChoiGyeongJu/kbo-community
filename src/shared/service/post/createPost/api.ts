@@ -1,5 +1,6 @@
-import { PostInfo } from '@shared/types';
 import axios from 'axios';
+
+import { PostInfo } from '$shared/types';
 
 type ReqCreatePost = Pick<PostInfo, 'title' | 'contents'>;
 type ResCreatePost = { postId: number };

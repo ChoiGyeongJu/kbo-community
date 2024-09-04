@@ -1,8 +1,12 @@
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { TanstackQueryProvider } from './contexts';
-import DesktopRouter from '@desktop/DesktopRouter';
-import './App.css';
 import { Suspense } from 'react';
+
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+import { TanstackQueryProvider } from './contexts';
+
+import DesktopRouter from '$desktop/DesktopRouter';
+
+import './App.css';
 
 const App = () => {
   return (

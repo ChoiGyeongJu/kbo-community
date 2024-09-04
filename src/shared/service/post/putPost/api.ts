@@ -1,5 +1,6 @@
-import { PostInfo } from '@shared/types';
 import axios from 'axios';
+
+import { PostInfo } from '$shared/types';
 
 type ReqPutPost = Pick<PostInfo, 'postId' | 'title' | 'contents'>;
 

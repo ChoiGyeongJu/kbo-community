@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./src/",
     "paths": {
-      "@desktop/*": ["desktop/*"],
-      "@shared/*": ["shared/*"]
+      "$desktop/*": ["desktop/*"],
+      "$shared/*": ["shared/*"]
     }
   }
 }

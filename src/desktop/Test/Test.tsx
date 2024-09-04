@@ -1,6 +1,8 @@
-import { postQueries } from '@shared/service/post';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+
+import { useSuspenseQuery } from '@tanstack/react-query';
+
+import { postQueries } from '$shared/service/post';
 
 const Test = () => {
   const { postId } = useParams();

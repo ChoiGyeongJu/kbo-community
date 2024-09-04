@@ -12,8 +12,39 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vitest.config.ts'],
   parser: '@typescript-eslint/parser',
-  plugins: ['prettier', 'react', '@typescript-eslint', 'no-relative-import-paths'],
+  plugins: ['import', 'prettier', 'react', '@typescript-eslint', 'no-relative-import-paths'],
   rules: {
+    'import/order': [
+      'warn',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['index', 'parent', 'sibling'],
+          ['object', 'type'],
+          'unknown',
+        ],
+        pathGroups: [
+          {
+            pattern: 'react*',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '$/*',
+            group: 'internal',
+            position: 'after',
+          },
+        ],
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['react'],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
