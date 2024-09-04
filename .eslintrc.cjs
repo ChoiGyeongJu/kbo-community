@@ -1,6 +1,11 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   extends: [
     'prettier',
     'eslint:recommended',
@@ -9,6 +14,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:@tanstack/eslint-plugin-query/recommended',
+    'plugin:storybook/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vitest.config.ts'],
   parser: '@typescript-eslint/parser',
