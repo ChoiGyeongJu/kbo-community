@@ -10,7 +10,6 @@ export default {
 
 export const PostItem: StoryObj = {
   args: {
-    rowId: 227,
     postInfo: {
       postId: 1,
       title: '테스트 제목 입니다.',
