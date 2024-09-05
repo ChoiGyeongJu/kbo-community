@@ -6,6 +6,8 @@ interface PostInfo {
   };
   title: string;
   contents: string;
+  viewCounts: number;
+  likeCounts: number;
   regiDate: string;
   modiDate: string;
 }
