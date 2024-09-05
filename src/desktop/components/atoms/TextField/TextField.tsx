@@ -1,6 +1,8 @@
+import React from 'react';
+
 import styled from 'styled-components';
 
-interface InputProps {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   width?: string;
   height?: string;
   /**
@@ -49,30 +51,39 @@ const StyledTextField = styled.input<InputProps>`
     }
   }};
   background: ${props => props.bgColor};
-  padding: 0px 8px;
+  padding: 0px 4px;
 `;
 
-const TextField = ({
-  width = '200px',
-  height = '40px',
-  color = 'black',
-  outline = 'full',
-  bgColor = 'white',
-  borderColor = 'black',
-  borderRadius = '8px',
-}: InputProps) => {
-  return (
-    <StyledTextField
-      type="text"
-      width={width}
-      height={height}
-      color={color}
-      outline={outline}
-      bgColor={bgColor}
-      borderColor={borderColor}
-      borderRadius={borderRadius}
-    />
-  );
-};
+const TextField = React.forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      width = '200px',
+      height = '40px',
+      color = 'black',
+      outline = 'full',
+      bgColor = 'white',
+      borderColor = 'black',
+      borderRadius = '8px',
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <StyledTextField
+        type="text"
+        width={width}
+        height={height}
+        color={color}
+        outline={outline}
+        bgColor={bgColor}
+        borderColor={borderColor}
+        borderRadius={borderRadius}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+TextField.displayName = 'TextField';
 
 export default TextField;
