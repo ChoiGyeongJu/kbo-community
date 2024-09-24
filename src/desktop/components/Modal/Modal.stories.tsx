@@ -8,7 +8,7 @@ import { useModal } from '$shared/hooks';
 
 const meta: Meta<typeof Modal> = {
   component: Modal,
-  title: 'Components/Modal',
+  title: 'components/Modal',
   tags: ['autodocs'],
   argTypes: {},
   decorators: [

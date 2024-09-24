@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import SearchPost from './SearchPost';
 
 export default {
-  title: 'molecule/SearchPost',
+  title: 'components/SearchPost',
   component: SearchPost,
   tags: ['autodocs'],
 } as Meta<typeof SearchPost>;

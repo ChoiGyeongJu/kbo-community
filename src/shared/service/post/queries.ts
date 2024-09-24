@@ -6,14 +6,14 @@ import { getPostList, ReqGetPostList } from './getPostList';
 const postQueries = {
   serviceGetPost: ({ postId }: ReqGetPost) =>
     queryOptions({
-      queryKey: ['post', postId],
+      queryKey: ['post', postId] as const,
       queryFn: () => getPost({ postId }),
       enabled: !!postId,
     }),
-  serviceGetPostList: ({ page }: ReqGetPostList) =>
+  serviceGetPostList: ({ category, page, size, keyword }: ReqGetPostList) =>
     queryOptions({
-      queryKey: ['postList', page],
-      queryFn: () => getPostList({ page }),
+      queryKey: ['postList', { category, page, size, keyword }] as const,
+      queryFn: () => getPostList({ category, page, size, keyword }),
     }),
 };
 

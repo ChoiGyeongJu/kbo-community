@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import PostListItem from './PostListItem';
 
 export default {
-  title: 'molecule/PostItem',
+  title: 'components/PostItem',
   component: PostListItem,
   tags: ['autodocs'],
 } as Meta<typeof PostListItem>;
