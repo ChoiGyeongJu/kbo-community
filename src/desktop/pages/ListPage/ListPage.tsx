@@ -40,7 +40,7 @@ const ListPage = () => {
   return (
     <ListWrapper>
       <ButtonWrapper>
-        <UIButton variant="contained" onClick={handleClickWrite}>
+        <UIButton variant="outlined" onClick={handleClickWrite}>
           게시글 작성
         </UIButton>
       </ButtonWrapper>
@@ -62,12 +62,15 @@ export default ListPage;
 const ListWrapper = styled.div`
   width: 900px;
   height: 100%;
+  padding: 50px;
   display: flex;
   flex-direction: column;
+  background-color: white;
+  margin-top: 80px;
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 32px 0 32px auto;
+  margin: 0px 0 32px auto;
 `;
 
 const StyledTable = styled(List)`
