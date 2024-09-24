@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { IconButton, Paper } from '@mui/material';
 import styled from 'styled-components';
 
-import { TextField } from '$desktop/components/UI/TextField';
+import { TextField } from '$desktop/components';
 
 interface Props {
   width?: string;

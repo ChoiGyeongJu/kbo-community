@@ -6,9 +6,13 @@ import { styled } from 'styled-components';
 
 import { SizeFilter } from './SizeFilter';
 
-import { Pagination } from '$desktop/components/Pagination';
-import { PostListItem } from '$desktop/components/PostListItem';
-import { UIButton } from '$desktop/components/UI/UIButton';
+import {
+  PostListItem,
+  Pagination,
+  PostListHeader,
+  SearchPost,
+  UIButton,
+} from '$desktop/components';
 import { useListQueryParams, useRoute } from '$shared/hooks';
 import { postQueries } from '$shared/service/post';
 

@@ -1,7 +1,6 @@
 import { createContext, useState, ReactNode } from 'react';
 
-import { Modal } from '$desktop/components/Modal';
-import { UIButton } from '$desktop/components/UI/UIButton';
+import { Modal, UIButton } from '$desktop/components';
 
 interface ButtonProps {
   text: string;

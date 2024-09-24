@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { Header } from '$desktop/components/Header';
+import { Header } from '$desktop/components';
 
 const Layout = () => {
   return (
