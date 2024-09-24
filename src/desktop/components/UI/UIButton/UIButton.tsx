@@ -3,7 +3,7 @@ import React from 'react';
 import { Button as MuiButton } from '@mui/material';
 import styled from 'styled-components';
 
-interface ButtonProps {
+interface ButtonProps extends React.ComponentProps<typeof MuiButton> {
   variant?: 'text' | 'outlined' | 'contained';
   color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
   /**
