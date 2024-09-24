@@ -4,6 +4,7 @@ import { List } from '@mui/material';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { styled } from 'styled-components';
 
+import { SearchFilter } from './SearchFilter';
 import { SizeFilter } from './SizeFilter';
 
 import {
@@ -44,12 +45,17 @@ const ListPage = () => {
   return (
     <ListWrapper>
       <ButtonWrapper>
+        <SearchWrapper>
+          <SearchFilter />
+          <SearchPost />
+        </SearchWrapper>
         <UIButton variant="outlined" onClick={handleClickWrite}>
           게시글 작성
         </UIButton>
       </ButtonWrapper>
 
       <StyledTable>
+        <PostListHeader />
         {postList?.map(v => (
           <PostListItem key={v.postId} postInfo={v} onClickPost={() => handleClickPost(v.postId)} />
         ))}
@@ -69,17 +75,29 @@ const ListWrapper = styled.div`
   padding: 50px;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  margin-top: 80px;
+  border-radius: 8px;
+  margin: 80px 0;
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 0px 0 32px auto;
+  display: flex;
+  margin-bottom: 32px;
+  justify-content: space-between;
+`;
+
+const SearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 40%;
+  transform: translateX(-40%);
+  gap: 12px;
 `;
 
 const StyledTable = styled(List)`
+  width: 900px;
   overflow-y: auto;
   margin-top: 24px;
+  padding: 0 !important;
 `;
 
 const StyledPagination = styled.div`

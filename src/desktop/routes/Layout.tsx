@@ -23,9 +23,11 @@ const LayoutWrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ededed;
 `;
 
 const ContentWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin-top: 80px;
 `;

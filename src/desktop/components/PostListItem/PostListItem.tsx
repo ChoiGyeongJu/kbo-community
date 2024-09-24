@@ -18,12 +18,14 @@ const PostListItem = ({ postInfo, onClickPost }: Props) => {
 
   return (
     <StyledTableRow hover onClick={() => onClickPost(postId)}>
-      <TableCell>{postId}</TableCell>
-      <TableCell className="title">{title}</TableCell>
-      <TableCell>{author.name}</TableCell>
-      <TableCell>{viewCounts}</TableCell>
-      <TableCell>{likeCounts}</TableCell>
-      <TableCell>{regiDate}</TableCell>
+      <TableCell sx={{ width: '2%' }}>{postId}</TableCell>
+      <TableCell sx={{ width: '70%' }} className="title">
+        {title}
+      </TableCell>
+      <TableCell sx={{ width: '7%' }}>{author.name}</TableCell>
+      <TableCell sx={{ width: '7%' }}>{viewCounts}</TableCell>
+      <TableCell sx={{ width: '7%' }}>{likeCounts}</TableCell>
+      <TableCell sx={{ width: '7%' }}>{regiDate}</TableCell>
     </StyledTableRow>
   );
 };

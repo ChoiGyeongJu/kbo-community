@@ -2,16 +2,20 @@ import { useRef, useState } from 'react';
 
 import { Close } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton, Paper } from '@mui/material';
+import { IconButton } from '@mui/material';
 import styled from 'styled-components';
 
 import { TextField } from '$desktop/components';
+import { useListQueryParams } from '$shared/hooks';
 
 interface Props {
   width?: string;
 }
 
 const SearchPost = ({ width }: Props) => {
+  const { getQueryParams, setQueryParams } = useListQueryParams();
+  const { filter } = getQueryParams();
+
   const ref = useRef<HTMLInputElement>(null);
 
   const [value, setValue] = useState('');
@@ -35,8 +39,7 @@ const SearchPost = ({ width }: Props) => {
   };
 
   const handleSearch = () => {
-    // TODO: 라우팅 및 검색 필터 처리
-    console.log('search value: ', value);
+    setQueryParams({ filter: filter ?? 'TITLE', keyword: value });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -72,11 +75,12 @@ const SearchPost = ({ width }: Props) => {
 
 export default SearchPost;
 
-const SearchInputWrapper = styled(Paper)<Props>`
+const SearchInputWrapper = styled.div<Props>`
   display: flex;
   align-items: center;
   width: ${props => props.width ?? '235px'};
   padding: 0 4px;
+  border: 1px solid #ccd0d7;
 
   & button {
     width: 28px;

@@ -21,14 +21,15 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 80px;
-  background: white;
   z-index: 9;
   display: flex;
   align-items: center;
   padding: 0 32px;
   box-sizing: border-box;
+  background-color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 
   & img {
     height: 50px;

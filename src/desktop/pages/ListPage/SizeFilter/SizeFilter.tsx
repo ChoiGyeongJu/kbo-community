@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
-import { InputLabel, Menu, MenuItem } from '@mui/material';
+import { Menu, MenuItem } from '@mui/material';
 import { styled } from 'styled-components';
 
 import useListQueryParams, { SizeOptions } from '$shared/hooks/useListQueryParams';
@@ -34,10 +34,10 @@ const SizeFilter = ({ totalCount }: { totalCount: number }) => {
 
   return (
     <SelectWrapper>
-      <InputLabel onClick={handleOpenFilter}>
+      <ValueWrapper onClick={handleOpenFilter}>
         {size}개씩 보기
         {anchorEl ? <ArrowDropUp /> : <ArrowDropDown />}
-      </InputLabel>
+      </ValueWrapper>
       {!!anchorEl && (
         <Menu
           autoFocus={false}
@@ -75,13 +75,15 @@ const SelectWrapper = styled.div`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-
-  & label {
-    display: flex;
-    gap: 4px;
-    cursor: pointer;
-    border: 1px solid;
-    padding: 6px 12px;
-    border-radius: 8px;
-  }
+`;
+const ValueWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border: 1px solid;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid #ccd0d7;
 `;
