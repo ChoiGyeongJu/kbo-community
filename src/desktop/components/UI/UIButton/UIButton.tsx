@@ -25,7 +25,7 @@ const StyledButton = styled(MuiButton)<ButtonProps>`
   cursor: pointer;
 `;
 
-const Button = ({
+const UIButton = ({
   variant = 'text',
   fontSize = 13,
   color,
@@ -38,4 +38,4 @@ const Button = ({
   </StyledButton>
 );
 
-export default Button;
+export default UIButton;

@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Button from './Button';
+import UIButton from './UIButton';
 
 export default {
-  title: 'Components/Button',
-  component: Button,
+  title: 'Components/UIButton',
+  component: UIButton,
   tags: ['autodocs'],
-} as Meta<typeof Button>;
+} as Meta<typeof UIButton>;
 
 export const Contained: StoryObj = {
   args: { variant: 'contained', color: 'primary', children: 'contained button' },

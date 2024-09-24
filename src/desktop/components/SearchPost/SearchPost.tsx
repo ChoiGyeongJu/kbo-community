@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { IconButton, Paper } from '@mui/material';
 import styled from 'styled-components';
 
-import { TextField } from '$desktop/components/atoms/TextField';
+import { TextField } from '$desktop/components/UI/TextField';
 
 interface Props {
   width?: string;
@@ -13,7 +13,7 @@ interface Props {
 
 const SearchPost = ({ width }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
-  console.log(width);
+
   const [value, setValue] = useState('');
   const [isFocus, setIsFocus] = useState(false);
 
