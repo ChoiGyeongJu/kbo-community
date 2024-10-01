@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 import { TextField, UIButton } from '$desktop/components';
 
+import { useModal, useRoute } from '$shared/hooks';
 import { useCreatePostMutation } from '$shared/service/post/createPost';
 import { isContentEmpty } from '$shared/utils';
 
@@ -17,6 +18,9 @@ interface PostFormData {
 
 const WritePage = () => {
   const { category } = useParams();
+  const { openModal, closeModal } = useModal();
+  const useRoutes = useRoute();
+
   const {
     register,
     handleSubmit,
@@ -27,6 +31,24 @@ const WritePage = () => {
   const createPostMutation = useCreatePostMutation({});
   const handleClickSubmit = (data: PostFormData) => {
     createPostMutation.mutate(data);
+  };
+
+  const handleClickCancel = () => {
+    openModal({
+      title: '페이지 나가기',
+      contents: <p>작성중인 내용은 저장되지 않습니다.</p>,
+      buttons: [
+        { text: '취소', variant: 'outlined', onClick: () => closeModal() },
+        {
+          text: '확인',
+          variant: 'contained',
+          onClick: () => {
+            closeModal();
+            useRoutes.goBack();
+          },
+        },
+      ],
+    });
   };
 
   return (
@@ -59,7 +81,9 @@ const WritePage = () => {
         )}
       />
       <ButtonWrapper>
-        <UIButton type="submit">취소</UIButton>
+        <UIButton type="submit" onClick={handleClickCancel}>
+          취소
+        </UIButton>
         <UIButton variant="contained" type="submit" disabled={!isValid || isSubmitting}>
           등록
         </UIButton>

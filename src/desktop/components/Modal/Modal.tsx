@@ -1,9 +1,9 @@
 import { Dialog, DialogTitle, DialogContentText } from '@mui/material';
+
 import { styled } from 'styled-components';
 
-import { UIButton } from '../UI/UIButton';
-
 import { useModal } from '$shared/hooks';
+import { UIButton } from '../UI/UIButton';
 
 const Modal: React.FC = () => {
   const { isOpen, modalProps, closeModal } = useModal();
@@ -49,6 +49,7 @@ const StyledTitle = styled(DialogTitle)`
   align-items: center;
   justify-content: center;
   padding-top: 30px;
+  font-weight: 800 !important;
 `;
 
 const StyledContent = styled(DialogContentText)`

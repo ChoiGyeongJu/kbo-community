@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
-
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import { ModalProvider } from '$contexts/ModalContext';
 import TanstackQueryProvider from '$contexts/TanstackQueryProvider';
+
 import { WebRouter } from '$desktop/routes';
 
 import './App.css';
@@ -10,9 +10,9 @@ import './App.css';
 const App = () => {
   return (
     <TanstackQueryProvider>
-      <Suspense fallback={<></>}>
+      <ModalProvider>
         <WebRouter />
-      </Suspense>
+      </ModalProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </TanstackQueryProvider>
   );
