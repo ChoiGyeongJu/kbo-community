@@ -18,10 +18,10 @@ const PostListItem = ({ postInfo, onClickPost }: Props) => {
       <TableCell sx={{ width: '70%' }} className="title">
         {title}
       </TableCell>
-      <TableCell sx={{ width: '7%' }}>{author.name}</TableCell>
+      <TableCell sx={{ width: '10%' }}>{author.name}</TableCell>
+      <TableCell sx={{ width: '12%' }}>{regiDate}</TableCell>
       <TableCell sx={{ width: '7%' }}>{viewCnt}</TableCell>
       <TableCell sx={{ width: '7%' }}>{likeCnt}</TableCell>
-      <TableCell sx={{ width: '7%' }}>{regiDate}</TableCell>
     </StyledTableRow>
   );
 };

@@ -23,7 +23,7 @@ const DetailPage = () => {
 export default DetailPage;
 
 const DetailWrapper = styled.div`
-  width: 900px;
+  width: 1024px;
   height: 100%;
   padding: 50px;
   margin: 30px 0;

@@ -72,7 +72,7 @@ const ListPage = () => {
 export default ListPage;
 
 const ListWrapper = styled.div`
-  width: 900px;
+  width: 1024px;
   height: 100%;
   padding: 50px;
   display: flex;
@@ -96,7 +96,7 @@ const SearchWrapper = styled.div`
 `;
 
 const StyledTable = styled(List)`
-  width: 900px;
+  width: 100%;
   overflow-y: auto;
   margin-top: 24px;
   padding: 0 !important;
