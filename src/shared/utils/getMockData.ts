@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 
+import { ResGetPost } from '$shared/service/post/getPost';
 import { ResGetPostList } from '$shared/service/post/getPostList';
 import { Post } from '$shared/types';
 
@@ -22,4 +23,22 @@ export const generatePostList = (count: number): ResGetPostList => {
   }
 
   return { totalCount: count, postList: posts };
+};
+
+export const generatePostDetail = (): ResGetPost => {
+  return {
+    post: {
+      postId: 1,
+      author: {
+        userId: 1,
+        name: faker.name.firstName(),
+      },
+      title: faker.lorem.sentence(),
+      contents: faker.lorem.paragraphs(),
+      viewCnt: faker.number.int({ min: 0, max: 99999 }),
+      likeCnt: faker.number.int({ min: 0, max: 99999 }),
+      regiDate: faker.date.past().toISOString().split('T')[0],
+      modiDate: faker.date.past().toISOString().split('T')[0],
+    },
+  };
 };

@@ -5,15 +5,15 @@ const useRoute = () => {
   const navigate = useNavigate();
 
   const goToList = (boardType: string) => {
-    navigate(`/board/${boardType}/list`);
+    navigate(`/${boardType}/list`);
   };
 
   const goToRead = ({ boardType, postId }: { boardType: string; postId: number }) => {
-    navigate(`/board/${boardType}/view/${postId}`);
+    navigate(`/${boardType}/view/${postId}`);
   };
 
   const goToWrite = ({ boardType, postId }: { boardType: string; postId?: number }) => {
-    navigate(`/board/${boardType}/write${postId ? `/${postId}` : ''}`);
+    navigate(`/${boardType}/write${postId ? `/${postId}` : ''}`);
   };
 
   const goBack = () => {

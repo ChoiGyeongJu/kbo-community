@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -8,9 +9,11 @@ const Layout = () => {
   return (
     <LayoutWrapper>
       <Header />
-      <ContentWrapper>
-        <Outlet />
-      </ContentWrapper>
+      <Suspense>
+        <ContentWrapper>
+          <Outlet />
+        </ContentWrapper>
+      </Suspense>
       {/* Footer */}
     </LayoutWrapper>
   );
