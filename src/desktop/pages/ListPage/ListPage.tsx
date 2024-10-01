@@ -1,11 +1,10 @@
 import { useParams } from 'react-router-dom';
 
 import { List } from '@mui/material';
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { styled } from 'styled-components';
 
-import { SearchFilter } from './SearchFilter';
-import { SizeFilter } from './SizeFilter';
+import { useQuery } from '@tanstack/react-query';
+
+import { styled } from 'styled-components';
 
 import {
   PostListItem,
@@ -14,8 +13,11 @@ import {
   SearchPost,
   UIButton,
 } from '$desktop/components';
+
 import { useListQueryParams, useRoute } from '$shared/hooks';
 import { postQueries } from '$shared/service/post';
+import { SearchFilter } from './SearchFilter';
+import { SizeFilter } from './SizeFilter';
 
 const ListPage = () => {
   const { category } = useParams();
@@ -23,12 +25,12 @@ const ListPage = () => {
   const { getQueryParams, setQueryParams } = useListQueryParams();
   const { page, size, keyword } = getQueryParams();
 
-  const { data } = useSuspenseQuery(
+  const { data } = useQuery(
     postQueries.serviceGetPostList({ category: String(category), page: page - 1, size, keyword })
   );
 
-  const totalPage = Math.ceil(data.totalCount / size);
-  const postList = data.postList;
+  const totalPage = data ? Math.ceil(data.totalCount / size) : 0;
+  const postList = data ? data.postList : [];
 
   const handleChagePage = (_: React.ChangeEvent<unknown>, page: number) => {
     setQueryParams({ page });
@@ -62,7 +64,7 @@ const ListPage = () => {
       </StyledTable>
       <StyledPagination>
         <Pagination count={totalPage} page={page} onChange={handleChagePage} />
-        <SizeFilter totalCount={data.totalCount} />
+        <SizeFilter totalCount={data ? data.totalCount : 0} />
       </StyledPagination>
     </ListWrapper>
   );

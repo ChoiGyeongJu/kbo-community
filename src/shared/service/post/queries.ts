@@ -10,10 +10,10 @@ const postQueries = {
       queryFn: () => getPost({ postId }),
       enabled: !!postId,
     }),
-  serviceGetPostList: ({ category, page, size, keyword }: ReqGetPostList) =>
+  serviceGetPostList: ({ categoryId, page, size, keyword }: ReqGetPostList) =>
     queryOptions({
-      queryKey: ['postList', { category, page, size, keyword }] as const,
-      queryFn: () => getPostList({ category, page, size, keyword }),
+      queryKey: ['postList', { categoryId, page, size, keyword }] as const,
+      queryFn: () => getPostList({ categoryId, page, size, keyword }),
     }),
 };
 

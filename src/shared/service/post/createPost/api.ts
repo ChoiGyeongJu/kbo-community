@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { PostInfo } from '$shared/types';
+import { PostDetail } from '$shared/types';
 
-type ReqCreatePost = Pick<PostInfo, 'title' | 'contents'>;
+type ReqCreatePost = Pick<PostDetail, 'title' | 'contents'>;
 type ResCreatePost = { postId: number };
 
 const createPost = async (dto: ReqCreatePost): Promise<ResCreatePost> => {

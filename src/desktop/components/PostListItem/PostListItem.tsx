@@ -1,20 +1,16 @@
 import { TableRow, TableCell } from '@mui/material';
+
 import styled from 'styled-components';
 
-import { PostInfo } from '$shared/types';
-
-export type PostListItemField = Pick<
-  PostInfo,
-  'postId' | 'title' | 'author' | 'viewCounts' | 'likeCounts' | 'regiDate'
->;
+import { Post } from '$shared/types';
 
 interface Props {
-  postInfo: PostListItemField;
+  postInfo: Post;
   onClickPost: (postId: number) => void;
 }
 
 const PostListItem = ({ postInfo, onClickPost }: Props) => {
-  const { postId, title, author, viewCounts, likeCounts, regiDate } = postInfo;
+  const { postId, title, author, viewCnt, likeCnt, regiDate } = postInfo;
 
   return (
     <StyledTableRow hover onClick={() => onClickPost(postId)}>
@@ -23,8 +19,8 @@ const PostListItem = ({ postInfo, onClickPost }: Props) => {
         {title}
       </TableCell>
       <TableCell sx={{ width: '7%' }}>{author.name}</TableCell>
-      <TableCell sx={{ width: '7%' }}>{viewCounts}</TableCell>
-      <TableCell sx={{ width: '7%' }}>{likeCounts}</TableCell>
+      <TableCell sx={{ width: '7%' }}>{viewCnt}</TableCell>
+      <TableCell sx={{ width: '7%' }}>{likeCnt}</TableCell>
       <TableCell sx={{ width: '7%' }}>{regiDate}</TableCell>
     </StyledTableRow>
   );

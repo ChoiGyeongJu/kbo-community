@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { PostInfo } from '$shared/types';
+import { Post } from '$shared/types';
 
-type ReqDeletePost = Pick<PostInfo, 'postId'>;
+type ReqDeletePost = Pick<Post, 'postId'>;
 
 const deletePost = async (postId: ReqDeletePost) => {
   return await axios.delete(`/post/${postId}`);

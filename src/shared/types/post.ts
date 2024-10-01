@@ -1,15 +1,19 @@
-interface PostInfo {
+interface Post {
   postId: number;
   author: {
     userId: number;
     name: string;
   };
   title: string;
-  contents: string;
-  viewCounts: number;
-  likeCounts: number;
+  viewCnt: number;
+  likeCnt: number;
   regiDate: string;
   modiDate: string;
 }
 
-export type { PostInfo };
+interface PostDetail extends Post {
+  contents: string;
+  // comment
+}
+
+export type { Post, PostDetail };

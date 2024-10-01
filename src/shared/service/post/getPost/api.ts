@@ -1,26 +1,12 @@
-import { PostInfo } from '@shared/types';
+import axios from 'axios';
 
-type ReqGetPost = Pick<PostInfo, 'postId'>;
-type ResGetPost = { post: PostInfo };
+import { PostDetail } from '$shared/types';
 
-const mockData = {
-  post: {
-    postId: 1,
-    author: {
-      userId: 1,
-      name: '홍길동',
-    },
-    title: '테스트 제목',
-    contents: '테스트 내용',
-    regiDate: '',
-    modiDate: '',
-  },
-};
+type ReqGetPost = Pick<PostDetail, 'postId'>;
+type ResGetPost = { post: PostDetail };
 
 const getPost = async (dto: ReqGetPost): Promise<ResGetPost> => {
-  console.log('get post api 호출: ', dto);
-  return mockData;
-  // return await axios.get(`/post/${dto.postId}`);
+  return await axios.get(`/post/${dto.postId}`);
 };
 
 export default getPost;
