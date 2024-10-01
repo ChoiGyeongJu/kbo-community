@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import { ListPage, DetailPage } from '$desktop/pages';
+import { ListPage, DetailPage, WritePage } from '$desktop/pages';
 
 import Layout from './Layout';
 
@@ -24,7 +24,7 @@ const router = () => {
           <Route path="/:category">
             <Route path="list" element={<ListPage />} />
             <Route path="view/:postId" element={<DetailPage />} />
-            <Route path="write/:postId?" element={<>Write Page</>} />
+            <Route path="write/:postId?" element={<WritePage />} />
           </Route>
         </Route>
       </Routes>
