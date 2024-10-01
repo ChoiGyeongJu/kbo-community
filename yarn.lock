@@ -893,6 +893,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@faker-js/faker@npm:^9.0.3":
+  version: 9.0.3
+  resolution: "@faker-js/faker@npm:9.0.3"
+  checksum: 10c0/fde52946e7042e6273cf2ea3726a8a4b794c5b0fa8ac22cb9edcc5c436aec1b07fcb925e13abd663e86cd35d0286be0c65639d429b21bcd458205edaaa6394d0
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.13.0":
   version: 0.13.0
   resolution: "@humanwhocodes/config-array@npm:0.13.0"
@@ -2844,6 +2851,7 @@ __metadata:
     "@emotion/react": "npm:^11.13.3"
     "@emotion/styled": "npm:^11.13.0"
     "@eslint/js": "npm:^9.9.0"
+    "@faker-js/faker": "npm:^9.0.3"
     "@mui/icons-material": "npm:^6.0.2"
     "@mui/material": "npm:^6.0.2"
     "@storybook/addon-essentials": "npm:^8.2.9"

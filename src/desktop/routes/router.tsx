@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import App from 'App';
 
-import Layout from './Layout';
-
 import { ListPage } from '$desktop/pages';
+
+import Layout from './Layout';
 
 /**
  * @description 라우팅 구조
@@ -20,8 +20,8 @@ const router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="*" element={<Navigate to={'/entry'} replace />} />
-          <Route path="/" element={<Navigate to={'/entry'} replace />} />
+          <Route path="*" element={<Navigate to={'/total/list'} replace />} />
+          <Route path="/" element={<Navigate to={'/total/list'} replace />} />
 
           <Route path="/:category">
             <Route path="list" element={<ListPage />} />
