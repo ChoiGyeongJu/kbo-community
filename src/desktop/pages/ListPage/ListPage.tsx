@@ -14,19 +14,26 @@ import {
   UIButton,
 } from '$desktop/components';
 
+import { KBO_TEAM_LIST } from '$constants/teams';
 import { useListQueryParams, useRoute } from '$shared/hooks';
 import { postQueries } from '$shared/service/post';
+import { BoardType } from '$shared/types';
 import { SearchFilter } from './SearchFilter';
 import { SizeFilter } from './SizeFilter';
 
 const ListPage = () => {
-  const { category } = useParams();
+  const { boardType } = useParams<{ boardType: BoardType }>(); // TODO: 잘못된 boardType에 대한 접근 처리
   const useRoutes = useRoute();
   const { getQueryParams, setQueryParams } = useListQueryParams();
   const { page, size, keyword } = getQueryParams();
 
   const { data } = useQuery(
-    postQueries.serviceGetPostList({ category: String(category), page: page - 1, size, keyword })
+    postQueries.serviceGetPostList({
+      boardType: boardType ?? 'total',
+      page: page - 1,
+      size,
+      keyword,
+    })
   );
 
   const totalPage = data ? Math.ceil(data.totalCount / size) : 0;
@@ -37,15 +44,16 @@ const ListPage = () => {
   };
 
   const handleClickWrite = () => {
-    useRoutes.goToWrite({ boardType: String(category) });
+    useRoutes.goToWrite({ boardType: boardType ?? 'total' });
   };
 
   const handleClickPost = (id: number) => {
-    useRoutes.goToRead({ boardType: String(category), postId: id });
+    useRoutes.goToRead({ boardType: boardType ?? 'total', postId: id });
   };
 
   return (
     <ListWrapper>
+      <BoardTitle>{KBO_TEAM_LIST[boardType ?? 'total']} 게시판</BoardTitle>
       <ButtonWrapper>
         <SearchWrapper>
           <SearchFilter />
@@ -78,7 +86,16 @@ const ListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  margin: 80px 0;
+`;
+
+const BoardTitle = styled.div`
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 20px 0 50px 0;
 `;
 
 const ButtonWrapper = styled.div`

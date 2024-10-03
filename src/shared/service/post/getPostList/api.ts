@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-import { Post } from '$shared/types';
+import { BoardType, Post } from '$shared/types';
 import { generatePostList } from '$shared/utils';
 
 interface ReqGetPostList {
-  category: string;
+  boardType: BoardType;
   page: number;
   size: number;
   keyword?: string;
