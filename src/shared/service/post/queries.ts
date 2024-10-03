@@ -1,4 +1,4 @@
-import { queryOptions } from '@tanstack/react-query';
+import { keepPreviousData, queryOptions } from '@tanstack/react-query';
 
 import { getPost, ReqGetPost } from './getPost';
 import { getPostList, ReqGetPostList } from './getPostList';
@@ -14,6 +14,7 @@ const postQueries = {
     queryOptions({
       queryKey: ['postList', { boardType, page, size, keyword }] as const,
       queryFn: () => getPostList({ boardType, page, size, keyword }),
+      placeholderData: keepPreviousData,
     }),
 };
 

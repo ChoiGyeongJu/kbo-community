@@ -17,6 +17,7 @@ const PostListHeader = () => {
 const StyledSubHeader = styled(ListSubheader)`
   width: 100%;
   height: 50px;
+  overflow-y: hidden;
   padding: 0 !important;
   display: flex;
   align-items: center;

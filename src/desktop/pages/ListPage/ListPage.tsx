@@ -20,6 +20,7 @@ import { postQueries } from '$shared/service/post';
 import { BoardType } from '$shared/types';
 import { SearchFilter } from './SearchFilter';
 import { SizeFilter } from './SizeFilter';
+import { TeamFilter } from './TeamFilter';
 
 const ListPage = () => {
   const { boardType } = useParams<{ boardType: BoardType }>(); // TODO: 잘못된 boardType에 대한 접근 처리
@@ -55,6 +56,7 @@ const ListPage = () => {
     <ListWrapper>
       <BoardTitle>{KBO_TEAM_LIST[boardType ?? 'total']} 게시판</BoardTitle>
       <ButtonWrapper>
+        <TeamFilter />
         <SearchWrapper>
           <SearchFilter />
           <SearchPost />
@@ -107,8 +109,6 @@ const ButtonWrapper = styled.div`
 const SearchWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 40%;
-  transform: translateX(-40%);
   gap: 12px;
 `;
 
