@@ -1,9 +1,9 @@
+import { Comment } from './comment';
+import { Author } from './user';
+
 interface Post {
   postId: number;
-  author: {
-    userId: number;
-    name: string;
-  };
+  author: Author;
   title: string;
   viewCnt: number;
   likeCnt: number;
@@ -13,7 +13,7 @@ interface Post {
 
 interface PostDetail extends Post {
   contents: string;
-  // comment
+  comments: Comment[];
 }
 
 export type { Post, PostDetail };
