@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 
 import { ResGetPost } from '$shared/service/post/getPost';
 import { ResGetPostList } from '$shared/service/post/getPostList';
-import { Post } from '$shared/types';
+import { Post, Comment } from '$shared/types';
 
 export const generatePostList = (count: number): ResGetPostList => {
   const posts: Post[] = [];
@@ -30,7 +30,7 @@ export const generatePostDetail = (): ResGetPost => {
     post: {
       postId: 1,
       author: {
-        userId: 1,
+        userId: faker.number.int({ min: 0, max: 99999 }),
         name: faker.name.firstName(),
       },
       title: faker.lorem.sentence(),
@@ -39,6 +39,21 @@ export const generatePostDetail = (): ResGetPost => {
       likeCnt: faker.number.int({ min: 0, max: 99999 }),
       regiDate: faker.date.past().toISOString().split('T')[0],
       modiDate: faker.date.past().toISOString().split('T')[0],
+      comments: [generateComment()],
     },
+  };
+};
+
+export const generateComment = (): Comment => {
+  return {
+    commentId: faker.number.int({ min: 0, max: 99999 }),
+    author: {
+      userId: faker.number.int({ min: 0, max: 99999 }),
+      name: faker.name.firstName(),
+    },
+    contents: faker.lorem.paragraphs(),
+    subComments: [],
+    regiDate: faker.date.past().toISOString().split('T')[0],
+    modiDate: faker.date.past().toISOString().split('T')[0],
   };
 };
