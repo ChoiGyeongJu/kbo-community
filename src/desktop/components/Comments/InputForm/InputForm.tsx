@@ -5,17 +5,23 @@ import styled from 'styled-components';
 import { UIButton } from '$desktop/components/UI';
 
 interface Props {
-  commentId?: number;
-  onClickRegister: (id: number) => void;
+  initValue?: string;
+  commentId?: number; // 수정시 사용
+  parentId?: number; // 답글시 사용
+  onClickRegister: ({ commentId, parentId }: { commentId?: number; parentId?: number }) => void;
 }
 
-const InputForm = ({ commentId, onClickRegister }: Props) => {
-  const [value, setValue] = useState<string>('');
+const InputForm = ({ commentId, initValue, parentId, onClickRegister }: Props) => {
+  const [value, setValue] = useState<string>(initValue ?? '');
 
   const handleRegister = () => {
-    // TODO: 답글, 새댓글 등록 처리
-    if (commentId) onClickRegister(commentId);
-    else onClickRegister(0);
+    if (commentId) {
+      onClickRegister({ commentId });
+    } else if (parentId) {
+      onClickRegister({ parentId });
+    } else {
+      onClickRegister({});
+    }
   };
 
   return (

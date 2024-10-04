@@ -35,6 +35,7 @@ export const generatePostDetail = (): ResGetPost => {
       },
       title: faker.lorem.sentence(),
       contents: faker.lorem.paragraphs(),
+      commentCnt: faker.number.int({ min: 0, max: 100 }),
       viewCnt: faker.number.int({ min: 0, max: 99999 }),
       likeCnt: faker.number.int({ min: 0, max: 99999 }),
       regiDate: faker.date.past().toISOString().split('T')[0],

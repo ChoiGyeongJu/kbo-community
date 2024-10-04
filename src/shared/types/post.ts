@@ -14,6 +14,7 @@ interface Post {
 interface PostDetail extends Post {
   contents: string;
   comments: Comment[];
+  commentCnt: number;
 }
 
 export type { Post, PostDetail };

@@ -1,49 +1,119 @@
 import { useState } from 'react';
 
-import { CommentOutlined, Reply } from '@mui/icons-material';
-import { Avatar } from '@mui/material';
+import { CommentOutlined, Reply, MoreVert as MenuIcon } from '@mui/icons-material';
+import { Avatar, Menu, MenuItem } from '@mui/material';
 
 import styled from 'styled-components';
 
+import { useModal } from '$shared/hooks';
 import { Comment as IComment } from '$shared/types/comment';
 import { InputForm } from '../InputForm';
 
+// TODO: sub comment 영역 추가
 interface Props {
   comment: IComment;
-  onClickRegister: (id: number) => void;
+  onClickRegister: ({ commentId, parentId }: { commentId?: number; parentId?: number }) => void;
+  onClickDelete: (id: number) => void;
 }
 
-const Comment = ({ comment, onClickRegister }: Props) => {
+const Comment = ({ comment, onClickRegister, onClickDelete }: Props) => {
+  const { openModal, closeModal } = useModal();
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
   const [isReply, setIsReply] = useState<boolean>(false);
+
+  const handleOpenMenu = (e: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(e.currentTarget);
+  };
+
   const handleClickReply = () => {
     setIsReply(prev => !prev);
   };
+
+  const handleClickEdit = () => {
+    setIsEdit(true);
+    setAnchorEl(null);
+  };
+
+  const handleClickDelete = () => {
+    setAnchorEl(null);
+    openModal({
+      title: '댓글을 삭제하시겠습니까?',
+      buttons: [
+        { text: '취소', onClick: () => closeModal(), variant: 'outlined' },
+        {
+          text: '확인',
+          onClick: () => {
+            onClickDelete(comment.commentId);
+            closeModal();
+          },
+          variant: 'contained',
+        },
+      ],
+    });
+  };
+
   return (
     <>
-      <Wrapper>
-        <Avatar sizes="small" />
-        <Column>
-          <p className="name">{comment.author.name}</p>
-          <div className="contents">{comment.contents}</div>
-          <div className="date">
-            <span>
-              {comment.regiDate !== comment.modiDate
-                ? comment.modiDate + ' 수정'
-                : comment.regiDate}
-              &nbsp;&middot;
-            </span>
-            <div className="sub-comment" onClick={handleClickReply}>
-              <CommentOutlined />
-              답글쓰기
+      {isEdit ? (
+        <InputForm
+          commentId={comment.commentId}
+          initValue={comment.contents}
+          onClickRegister={({ commentId }) => {
+            onClickRegister({ commentId });
+            setIsEdit(false);
+          }}
+        />
+      ) : (
+        <Wrapper>
+          <Avatar sizes="small" />
+          <Column>
+            <MenuWrap>
+              <p>{comment.author.name}</p>
+              <div className="menu-icon" onClick={handleOpenMenu}>
+                <MenuIcon />
+              </div>
+            </MenuWrap>
+            <div className="contents">{comment.contents}</div>
+            <div className="date">
+              <span>
+                {comment.regiDate !== comment.modiDate
+                  ? comment.modiDate + ' 수정'
+                  : comment.regiDate}
+                &nbsp;&middot;
+              </span>
+              <div className="sub-comment" onClick={handleClickReply}>
+                <CommentOutlined />
+                답글쓰기
+              </div>
             </div>
-          </div>
-        </Column>
-      </Wrapper>
+          </Column>
+        </Wrapper>
+      )}
+
       {isReply && (
         <Wrapper>
           <Reply className="reply-icon" />
-          <InputForm commentId={comment.commentId} onClickRegister={onClickRegister} />
+          <InputForm
+            parentId={comment.commentId}
+            onClickRegister={({ parentId }) => {
+              onClickRegister({ parentId });
+              setIsReply(false);
+            }}
+          />
         </Wrapper>
+      )}
+
+      {!!anchorEl && (
+        <Menu
+          autoFocus={false}
+          open={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+          onClose={() => setAnchorEl(null)}
+        >
+          <MenuItem onClick={handleClickEdit}>수정</MenuItem>
+          <MenuItem onClick={handleClickDelete}>삭제</MenuItem>
+        </Menu>
       )}
     </>
   );
@@ -54,7 +124,7 @@ export default Comment;
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  padding: 20px 4px 20px 20px;
+  padding: 20px 4px 20px 10px;
   border-bottom: 1px solid #e8eaed;
   & .reply-icon {
     margin: 10px 10px 0 0;
@@ -67,11 +137,6 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 12px;
-  & .name {
-    margin: 4px 0;
-    font-size: 15px;
-    font-weight: 500;
-  }
   & .contents {
     font-size: 14px;
     font-weight: 400;
@@ -98,5 +163,19 @@ const Column = styled.div`
         height: 18px;
       }
     }
+  }
+`;
+
+const MenuWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  & p {
+    margin: 4px 0;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  & .menu-icon {
+    cursor: pointer;
   }
 `;

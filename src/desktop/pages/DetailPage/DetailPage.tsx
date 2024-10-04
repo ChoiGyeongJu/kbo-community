@@ -4,6 +4,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 
 import styled from 'styled-components';
 
+import { Comments } from '$desktop/components/Comments';
 import { PostDetail } from '$desktop/components/PostDetail';
 
 import { postQueries } from '$shared/service/post';
@@ -16,6 +17,7 @@ const DetailPage = () => {
   return (
     <DetailWrapper>
       <PostDetail postInfo={data.post} />
+      <Comments commentCnt={data.post.commentCnt} comments={data.post.comments} />
     </DetailWrapper>
   );
 };
