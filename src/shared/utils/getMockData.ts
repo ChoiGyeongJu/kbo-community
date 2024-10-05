@@ -53,7 +53,19 @@ export const generateComment = (): Comment => {
       name: faker.name.firstName(),
     },
     contents: faker.lorem.paragraphs(),
-    subComments: [],
+    subComments: [
+      {
+        commentId: faker.number.int({ min: 0, max: 99999 }),
+        author: {
+          userId: faker.number.int({ min: 0, max: 99999 }),
+          name: faker.name.firstName(),
+        },
+        contents: faker.lorem.paragraphs(),
+        subComments: [],
+        regiDate: faker.date.past().toISOString().split('T')[0],
+        modiDate: faker.date.past().toISOString().split('T')[0],
+      },
+    ],
     regiDate: faker.date.past().toISOString().split('T')[0],
     modiDate: faker.date.past().toISOString().split('T')[0],
   };

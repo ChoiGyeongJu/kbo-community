@@ -9,14 +9,14 @@ import { useModal } from '$shared/hooks';
 import { Comment as IComment } from '$shared/types/comment';
 import { InputForm } from '../InputForm';
 
-// TODO: sub comment 영역 추가
 interface Props {
+  isSub?: boolean;
   comment: IComment;
   onClickRegister: ({ commentId, parentId }: { commentId?: number; parentId?: number }) => void;
   onClickDelete: (id: number) => void;
 }
 
-const Comment = ({ comment, onClickRegister, onClickDelete }: Props) => {
+const Comment = ({ isSub = false, comment, onClickRegister, onClickDelete }: Props) => {
   const { openModal, closeModal } = useModal();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -66,6 +66,7 @@ const Comment = ({ comment, onClickRegister, onClickDelete }: Props) => {
         />
       ) : (
         <Wrapper>
+          {isSub && <Reply className="reply-icon" />}
           <Avatar sizes="small" />
           <Column>
             <MenuWrap>
@@ -80,12 +81,13 @@ const Comment = ({ comment, onClickRegister, onClickDelete }: Props) => {
                 {comment.regiDate !== comment.modiDate
                   ? comment.modiDate + ' 수정'
                   : comment.regiDate}
-                &nbsp;&middot;
               </span>
-              <div className="sub-comment" onClick={handleClickReply}>
-                <CommentOutlined />
-                답글쓰기
-              </div>
+              {!isSub && (
+                <div className="sub-comment" onClick={handleClickReply}>
+                  <CommentOutlined />
+                  답글쓰기
+                </div>
+              )}
             </div>
           </Column>
         </Wrapper>
@@ -127,7 +129,7 @@ const Wrapper = styled.div`
   padding: 20px 4px 20px 10px;
   border-bottom: 1px solid #e8eaed;
   & .reply-icon {
-    margin: 10px 10px 0 0;
+    margin: 10px 16px 0 0;
     transform: rotate(180deg);
     color: #5f6368;
   }
@@ -151,7 +153,7 @@ const Column = styled.div`
     & .sub-comment {
       cursor: pointer;
       display: flex;
-      margin-left: 4px;
+      margin-left: 8px;
       padding: 4px;
       border-radius: 6px;
       gap: 4px;

@@ -39,12 +39,23 @@ const Comments = ({ commentCnt, comments }: Props) => {
         <InputForm onClickRegister={handleClickRegister} />
       </InputWrapper>
       {comments.map(v => (
-        <Comment
-          key={v.commentId}
-          comment={v}
-          onClickRegister={handleClickRegister}
-          onClickDelete={handleClickDelete}
-        />
+        <>
+          <Comment
+            key={v.commentId}
+            comment={v}
+            onClickRegister={handleClickRegister}
+            onClickDelete={handleClickDelete}
+          />
+          {v.subComments?.map(sub => (
+            <Comment
+              key={sub.commentId}
+              isSub={true}
+              comment={sub}
+              onClickRegister={handleClickRegister}
+              onClickDelete={handleClickDelete}
+            />
+          ))}
+        </>
       ))}
     </ListWrapper>
   );
