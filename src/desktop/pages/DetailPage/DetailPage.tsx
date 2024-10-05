@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useSuspenseQuery } from '@tanstack/react-query';
@@ -8,11 +9,16 @@ import { Comments } from '$desktop/components/Comments';
 import { PostDetail } from '$desktop/components/PostDetail';
 
 import { postQueries } from '$shared/service/post';
+import { ScrollToTop } from '$shared/utils';
 
 const DetailPage = () => {
   const { postId } = useParams();
 
   const { data } = useSuspenseQuery(postQueries.serviceGetPost({ postId: Number(postId) }));
+
+  useEffect(() => {
+    ScrollToTop();
+  }, []);
 
   return (
     <DetailWrapper>
