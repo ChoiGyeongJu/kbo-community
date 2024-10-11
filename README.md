@@ -56,6 +56,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) 
 ![Yarn Berry](https://img.shields.io/badge/Yarn%20Berry-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white) 
 ![MSW](https://img.shields.io/badge/MSW-FFCA28?style=for-the-badge&logo=undefined&logoColor=black) 
+![Storybook](https://img.shields.io/badge/Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)
 ![TanStack Query](https://img.shields.io/badge/TanStack%20Query-007ACC?style=for-the-badge&logo=react-query&logoColor=white) 
 ![Styled Components](https://img.shields.io/badge/Styled--Components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 
