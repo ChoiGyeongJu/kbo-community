@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 import { BoardType, Post } from '$shared/types';
-import { generatePostList } from '$shared/utils';
 
 interface ReqGetPostList {
   boardType: BoardType;
@@ -12,10 +11,8 @@ interface ReqGetPostList {
 type ResGetPostList = { totalCount: number; postList: Post[] };
 
 const getPostList = async (dto: ReqGetPostList): Promise<ResGetPostList> => {
-  if (import.meta.env.MODE === 'localDev') {
-    return generatePostList(dto.size);
-  }
-  return await axios.get(`/post?page=${dto.page}&size=${dto.size}`);
+  const res = await axios.get(`/post?page=${dto.page}&size=${dto.size}`);
+  return res.data;
 };
 
 export default getPostList;

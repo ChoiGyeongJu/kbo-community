@@ -1,10 +1,9 @@
 import { faker } from '@faker-js/faker';
 
 import { ResGetPost } from '$shared/service/post/getPost';
-import { ResGetPostList } from '$shared/service/post/getPostList';
 import { Post, Comment } from '$shared/types';
 
-export const generatePostList = (count: number): ResGetPostList => {
+export const generatePostList = (count: number) => {
   const posts: Post[] = [];
 
   for (let i = 1; i <= count; i++) {
@@ -22,7 +21,7 @@ export const generatePostList = (count: number): ResGetPostList => {
     });
   }
 
-  return { totalCount: count, postList: posts };
+  return posts;
 };
 
 export const generatePostDetail = (): ResGetPost => {
